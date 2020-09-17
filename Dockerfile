@@ -16,4 +16,5 @@ RUN apt-get update && apt-get install -y -qq \
 RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git \
         && ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer \
         && apt update -yqq \
-        && apt install awscli -yqq
+        && apt install awscli -yqq \
+        && curl -sL https://sentry.io/get-cli/ | bash
