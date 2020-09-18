@@ -4,7 +4,7 @@ FROM python:slim
 ENV PATH /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.ebcli-virtual-env/executables:/root/.pyenv/versions/3.7.2/bin
 
 # Install dependencies
-RUN apt-get update && apt-get install -y -qq \
+RUN apt-get update && apt-get install -y \
         build-essential \
         zlib1g-dev \
         libssl-dev \
@@ -29,4 +29,4 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN curl -sL https://sentry.io/get-cli/ | bash
 
 # Install Bundler
-RUN gem install bundler
+RUN gem install bundler:1.17.2
