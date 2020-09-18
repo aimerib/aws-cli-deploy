@@ -12,9 +12,12 @@ RUN apt-get update && apt-get install -y -qq \
         libreadline-dev \
         libbz2-dev \
         curl \
-        git
+        git \
+        awscli \
+        ruby
 RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git \
         && ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer \
-        && apt update -yqq \
-        && apt install awscli -yqq \
-        && curl -sL https://sentry.io/get-cli/ | bash
+        && gem install bundler
+        && curl -sL https://sentry.io/get-cli/ | bash \
+        && git config --global user.name $DEPLOYER_USER \
+        && git config --global user.email $DEPLOYER_EMAIL
