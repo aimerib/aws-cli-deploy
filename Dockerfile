@@ -1,7 +1,9 @@
 FROM python:slim
 
+# Set PATH with EB cli
 ENV PATH /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.ebcli-virtual-env/executables:/root/.pyenv/versions/3.7.2/bin
 
+# Install dependencies
 RUN apt-get update && apt-get install -y -qq \
         build-essential \
         zlib1g-dev \
@@ -13,9 +15,18 @@ RUN apt-get update && apt-get install -y -qq \
         libbz2-dev \
         curl \
         git \
-        awscli \
         ruby
+
+# Install EB cli
 RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git \
-        && ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer \
-        && gem install bundler \
-        && curl -sL https://sentry.io/get-cli/ | bash
+        && ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer
+
+# Install AWS cli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+        && unzip awscliv2.zip && ./aws/install
+
+# Install Sentry cli
+RUN curl -sL https://sentry.io/get-cli/ | bash
+
+# Install Bundler
+RUN gem install bundler
