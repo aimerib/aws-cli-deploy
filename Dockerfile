@@ -1,4 +1,5 @@
-FROM python:3.7.2-slim
+FROM ruby:2.6.6-slim
+# SHELL ["/bin/bash", "-c"]
 
 # Set PATH with EB cli
 ENV PATH /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.ebcli-virtual-env/executables:/root/.pyenv/versions/3.7.2/bin
@@ -28,13 +29,3 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 
 # Install Sentry cli
 RUN curl -sL https://sentry.io/get-cli/ | bash
-
-# Install Ruby and Bundler
-RUN curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash - || true \
-        && echo 'export PATH="/root/.rbenv/bin:$PATH"' >> /root/.bashrc \
-        && echo 'eval "$(rbenv init -)"' >> /root/.bashrc \
-        && . /root/.bashrc \
-        && rbenv install 2.6.6 \
-        && rbenv global 2.6.6 \
-        && rbenv rehash \
-        && gem install bundler:1.17.2
