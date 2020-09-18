@@ -18,6 +18,4 @@ RUN apt-get update && apt-get install -y -qq \
 RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git \
         && ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer \
         && gem install bundler \
-        && curl -sL https://sentry.io/get-cli/ | bash \
-        && git config --global user.name $DEPLOYER_USER \
-        && git config --global user.email $DEPLOYER_EMAIL
+        && curl -sL https://sentry.io/get-cli/ | bash
