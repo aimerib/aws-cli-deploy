@@ -7,6 +7,9 @@ ENV PYENV_BIN=/usr/local/bin/python
 
 # Install dependencies
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
 RUN apt-get update && apt-get install -y \
         build-essential \
         zlib1g-dev \
@@ -20,7 +23,8 @@ RUN apt-get update && apt-get install -y \
         unzip \
         git \
         libpq-dev \
-        nodejs
+        nodejs \
+        yarn
 
 # Install EB cli
 RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git \
