@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y \
         libbz2-dev \
         curl \
         unzip \
-        git
+        git \
+        libpq-dev
 
 # Install EB cli
 RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git \
