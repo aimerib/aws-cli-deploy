@@ -6,6 +6,7 @@ ENV PATH /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:
 ENV PYENV_BIN=/usr/local/bin/python
 
 # Install dependencies
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get update && apt-get install -y \
         build-essential \
         zlib1g-dev \
@@ -18,7 +19,8 @@ RUN apt-get update && apt-get install -y \
         curl \
         unzip \
         git \
-        libpq-dev
+        libpq-dev \
+        nodejs
 
 # Install EB cli
 RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git \
