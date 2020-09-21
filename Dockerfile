@@ -33,14 +33,14 @@ RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git \
 
 # Install AWS cli
 
-# installing it from pip3:
-# https://github.com/aws/aws-cli/issues/5262#issue-630949863
-# might be fixed in the near future.
+# # installing it from pip3:
+# # https://github.com/aws/aws-cli/issues/5262#issue-630949863
+# # might be fixed in the near future.
 
-RUN apt-get install -y python3-setuptools
-RUN pip3 install --user awscli
-# RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
-#         && unzip awscliv2.zip && ./aws/install
+# RUN apt-get install -y python3-setuptools
+# RUN pip3 install --user awscli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+        && unzip awscliv2.zip && ./aws/install
 
 # Install Sentry cli
 RUN curl -sL https://sentry.io/get-cli/ | bash
