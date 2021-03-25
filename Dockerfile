@@ -19,7 +19,8 @@ RUN apt-get update && apt-get install -y \
         unzip \
         git \
         libpq-dev \
-        gnupg2
+        gnupg2 \
+        shared-mime-info
 
 # Install Yarn and node
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
